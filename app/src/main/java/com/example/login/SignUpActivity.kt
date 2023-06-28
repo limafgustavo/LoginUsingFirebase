@@ -62,7 +62,7 @@ class SignUpActivity : AppCompatActivity() {
             return false
         }
 
-        if (binding.editTextPassword.text.toString().length <= 7){
+        if (binding.editTextPassword.length() <= 7){
             binding.textInputLayoutPasssword.error = "Password should be at least 8 characters long "
             binding.textInputLayoutPasssword.errorIconDrawable = null
             return false
