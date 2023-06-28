@@ -1,5 +1,6 @@
 package com.example.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -31,6 +32,8 @@ class SignUpActivity : AppCompatActivity() {
                     if (it.isSuccessful) {
                         auth.signOut()
                         Toast.makeText(this,"Account created successfully!",Toast.LENGTH_SHORT).show()
+                        finish()
+                        startActivity(Intent(this, SignInActivity::class.java))
                     }
                     else{
                         Log.e("error: ", it.exception.toString())
