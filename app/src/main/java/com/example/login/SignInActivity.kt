@@ -7,7 +7,6 @@ import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import com.example.login.databinding.ActivitySignInBinding
-import com.example.login.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -24,21 +23,12 @@ class SignInActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonSignIn.setOnClickListener {
-
-            val email = binding.editTextEmail.text.toString()
-            val password = binding.editTextPassword.text.toString()
-
-            if (checkAllField()) {
-                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-                    if (it.isSuccessful){
-                        Toast.makeText(this,"Successfully sign in.", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this,HomeActivity::class.java))
-                        finish()
-                    }else{
-                        Log.e("error: ", it.exception.toString())
-                    }
-                }
-            }
+            login()
+        }
+        binding.buttonSignUp.setOnClickListener {
+            intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -59,12 +49,32 @@ class SignInActivity : AppCompatActivity() {
             binding.textInputLayoutPassword.errorIconDrawable = null
             return false
         }
-
         if (binding.editTextPassword.length() <= 7) {
             binding.textInputLayoutPassword.error = "Password should be at least 8 characters long "
             binding.textInputLayoutPassword.errorIconDrawable = null
             return false
         }
+
         return true
+    }
+
+    private fun login() {
+        var email = binding.editTextEmail.text.toString()
+        var password = binding.editTextPassword.text.toString()
+
+        if (checkAllField()) {
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Toast.makeText(this, "Successfully sign in.", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
+                } else {
+                    binding.textInputLayoutPassword.error = "Email or password is incorrect."
+                    binding.textInputLayoutPassword.errorIconDrawable = null
+                    binding.textInputLayoutEmail.errorIconDrawable = null
+                    Log.e("error: ", it.exception.toString())
+                }
+            }
+        }
     }
 }
