@@ -28,5 +28,11 @@ class HomeActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.buttonChangePassword.setOnClickListener {
+            val intent = Intent(this, UpdatePasswordActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
 }
