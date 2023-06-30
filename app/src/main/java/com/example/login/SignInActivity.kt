@@ -7,6 +7,7 @@ import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import com.example.login.databinding.ActivitySignInBinding
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -27,6 +28,11 @@ class SignInActivity : AppCompatActivity() {
         }
         binding.buttonSignUp.setOnClickListener {
             intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        binding.textViewForgotPassword.setOnClickListener {
+            intent = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -59,8 +65,8 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        var email = binding.editTextEmail.text.toString()
-        var password = binding.editTextPassword.text.toString()
+        val email = binding.editTextEmail.text.toString()
+        val password = binding.editTextPassword.text.toString()
 
         if (checkAllField()) {
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
