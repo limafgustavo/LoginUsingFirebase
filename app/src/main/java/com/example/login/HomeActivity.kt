@@ -46,7 +46,7 @@ class HomeActivity : AppCompatActivity() {
         binding.buttonDeleteAccount.setOnClickListener {
             MaterialAlertDialogBuilder(this)
                 .setTitle("Are you absolutely certain?")
-                .setPositiveButton("Confirm") { dialog, which ->
+                .setPositiveButton("Confirm") { _, _ ->
                     auth.currentUser?.delete()?.addOnCompleteListener {
                         if (it.isSuccessful){
                             Toast.makeText(this, "Account deleted sucessfully.", Toast.LENGTH_SHORT).show()
