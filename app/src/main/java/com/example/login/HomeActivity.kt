@@ -34,5 +34,11 @@ class HomeActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.buttonChangeEmail.setOnClickListener {
+            intent = Intent(this, UpdateEmailActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
 }

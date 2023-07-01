@@ -21,6 +21,12 @@ class UpdatePasswordActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        binding.buttonSignOut.setOnClickListener {
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+
+            finish()
+        }
         binding.buttonUpdatePassword.setOnClickListener {
             val user = auth.currentUser
             val password = binding.editTextPassword.text.toString()
