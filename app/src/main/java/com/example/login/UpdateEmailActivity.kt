@@ -31,7 +31,7 @@ class UpdateEmailActivity : AppCompatActivity() {
         }
 
         binding.buttonUpdateEmail.setOnClickListener {
-            if (CheckEmailField()) {
+            if (checkEmailField()) {
                 val email = binding.editTextEmail.text.toString()
 
                 auth.currentUser?.updateEmail(email)?.addOnCompleteListener {
@@ -53,7 +53,7 @@ class UpdateEmailActivity : AppCompatActivity() {
 
     }
 
-    private fun CheckEmailField(): Boolean {
+    private fun checkEmailField(): Boolean {
         val email = binding.editTextEmail.text.toString()
 
         if (binding.editTextEmail.text.toString() == "") {

@@ -50,5 +50,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonChangePassword" />
 
+    <Button
+        android:id="@+id/buttonDeleteAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Delete account"
+        app:layout_constraintEnd_toEndOf="@+id/buttonChangeEmail"
+        app:layout_constraintStart_toStartOf="@+id/buttonChangeEmail"
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangeEmail" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

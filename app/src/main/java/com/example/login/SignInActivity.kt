@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.login.databinding.ActivitySignInBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -36,6 +38,8 @@ class SignInActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+
     }
 
     private fun checkAllField(): Boolean {
