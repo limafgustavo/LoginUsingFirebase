@@ -20,6 +20,7 @@ class HomeActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
+
         binding.buttonSignOut.setOnClickListener {
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
